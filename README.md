@@ -1,1 +1,1 @@
-[Link](https://phamjackie.github.io/farnaminsights/)
+[Link](https://farnaminsights.github.io/farnaminsights/)
