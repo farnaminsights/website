@@ -1,1 +1,1 @@
-[Link](https://farnaminsights.github.io/farnaminsights/)
+[Link](https://farnaminsights.github.io/website/)
