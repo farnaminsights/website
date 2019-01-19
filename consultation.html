@@ -25,7 +25,6 @@
     
     <body>
 
-
         <header class="navbar-fixed-top">
             <div class="container">
                 <div class="row">
@@ -78,41 +77,64 @@
         <section id="contact-form">
           <div class="container">
             <div class="row">
-	     <form method="post" action="submit.php">
+	     <form method="post" action="">
               <div class="col-md-6 col-sm-12">
                 <div class="block">
                     <div class="form-group">
-                      <input type="text" class="form-control" id="name" placeholder="First and last name*">
+                      <input type="text" class="form-control" name="name" placeholder="First and last name*">
                     </div>
                     <div class="form-group">
-                      <input type="text" class="form-control" id="email" placeholder="Email address*">
+                      <input type="text" class="form-control" name="email" placeholder="Email address*">
                     </div>
                     <div class="form-group">
-                      <input type="text" class="form-control" id="school" placeholder="High school, City, State*">
+                      <input type="text" class="form-control" name="school" placeholder="High school, City, State*">
                     </div>
                     <div class="form-group">
-                      <input type="text" class="form-control" id="gpa" placeholder="GPA (Unweighted) or Percent Average*">
+                      <input type="text" class="form-control" name="gpa" placeholder="GPA (Unweighted) or Percent Average*">
                     </div>
                     <div class="form-group">
-                      <input type="text" class="form-control" id="psat" placeholder="PSAT Composite Score">
+                      <input type="text" class="form-control" name="psat" placeholder="PSAT Composite Score">
                     </div>
                     <div class="form-group">
-                      <input type="text" class="form-control" id="sat" placeholder="SAT Composite Score">
+                      <input type="text" class="form-control" name="sat" placeholder="SAT Composite Score">
                     </div>
                     <div class="form-group">
-                      <input type="text" class="form-control" id="act" placeholder="ACT Composite Score">
+                      <input type="text" class="form-control" name="act" placeholder="ACT Composite Score">
                     </div>
                 </div>
               </div>
               <div class="col-md-6 col-sm-12">
                 <div class="block">
                     <div class="form-group-2">
-                      <textarea class="form-control" rows="3" style="max-width: 100%" id="message" placeholder="Additional comments"></textarea>
+                      <textarea class="form-control" rows="3" style="max-width: 100%" name="message" placeholder="Additional comments"></textarea>
                     </div>
-                    <button class="button cta primary-btn raised" style="background-color: #1FB5FC" type="submit">Submit</button>
+                    <button class="button cta primary-btn raised" style="background-color: #1FB5FC" type="submit" name="submit">Submit</button>
                 </div>
               </div>
              </form>
+	     
+	     <?php 
+		if(isset($_POST["submit"])){
+    			$to = "farnaminsightscc@gmail.com";
+    			$from = "website@farnaminsights.com";
+    			$name = $_POST["name"];
+			$email = $_POST["email"];
+			$school = $_POST["school"];
+			$gpa = $_POST["gpa"];
+			$psat = $_POST["psat"];
+			$sat = $_POST["sat"];
+			$act = $_POST["act"];
+			$message = $_POST["message"];
+
+    			$subject = "Consultation Form Submission";
+			$email_body = "Name: " . $name . "\n" . "Email: " . $email . "\n" . "School, city, state: " . $school . "\n" . "GPA: " . $gpa . "\n" . "PSAT: " . $psat . "\n" . "SAT: " . $sat . "\n" . "ACT: " . $act . "\n" . "Message: " . $message;
+
+    			$headers = "From:" . $from;
+    			mail($to,$subject,$email_body,$headers);
+    			echo "Form submitted. Thank you, " . $name . ". We will contact you shortly.";
+    		}
+	    ?>
+		
             </div>
             <div id="contact-box" class="row">
               <div class="col-md-6 col-sm-12">
